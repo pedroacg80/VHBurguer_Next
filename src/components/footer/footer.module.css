@@ -1,0 +1,42 @@
+#footer {
+    background-color: var(--vinho);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25vh;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#informacao {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+#nav_footer {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#linha_footer {
+    border: 0;
+    height: 2px;
+    background: var(--laranja-destaque);
+    width: 100%;
+}
+
+#copyright_footer {
+    color: var(--laranja-destaque);
+    gap: 20px;
+    text-align: center;
+}
+
