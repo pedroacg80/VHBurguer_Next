@@ -1,0 +1,117 @@
+#main {
+    display: flex;
+    justify-content: center;
+    background-color: var(--fundo-claro);
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+}
+
+#banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#imagem_banner {
+    display: flex;
+    height: 30%;
+    width: 50%;
+}
+
+#banner h1 {
+    color: var(--laranja-destaque);
+    font-size: 6rem;
+    font-weight: 450;
+}
+
+#botoes_banner {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    height: 8vh;
+    width: 40vw;
+}
+
+#botao_banner {
+    width: 100%;
+}
+
+#btn_chamar {
+    width: 50%;
+    background-color: var(--laranja-destaque);
+    border: none;
+    border-radius: 20px;
+    color: var(--vinho);
+    font-size: 30px;
+    font-weight: 500;
+}
+
+#btn_ver {
+    width: 50%;
+    border-radius: 20px;
+    border: none;
+    background-color: var(--vinho);
+    color: var(--laranja-destaque);
+    font-size: 30px;
+    font-weight: 500;
+}
+
+#destaques {
+    background-color: var(--fundo-escuro);
+    height: 80vh;
+    display: flex;
+}
+
+#lado_esquerdo {
+    background-image: url('/imgs/mais_pedidos.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow:inset 0 -100px 14px rgba(0, 0, 0, 0.30);;
+    width: 30vw;
+    height: 60%;
+}
+
+#imagem_bacon {
+    background-image: url('/imgs/muito_bacon.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 30vw;
+    height: 30%;
+}
+
+#super_combos {
+    background-image: url('/imgs/super_combos.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 30vw;
+    height: 30%;
+}
+
+
+
+#unidades {
+    background-image: url('/imgs/unidade.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    gap: 30px;
+}
+
+#unidades h3 {
+    color: aliceblue;
+}
+
+#unidades li {
+    color: aliceblue;
+}
