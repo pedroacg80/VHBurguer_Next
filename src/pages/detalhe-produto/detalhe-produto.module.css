@@ -1,0 +1,35 @@
+#main {
+    background-color: var(--fundo-claro);
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+}
+
+#detalhe_produto {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    width: 50vw;
+    margin-top: 5vh;
+    border-radius: 10px;
+    margin-bottom: 5vh;
+}
+
+.area_edicao {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.area_edicao img {
+    border-radius: 10px;
+}
+
+.area_edicao h1 {
+    color: var(--laranja-destaque);
+}
+
+.informacoes_produto {
+    display: flex;
+    gap: 20px;
+}

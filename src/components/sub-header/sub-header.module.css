@@ -1,0 +1,21 @@
+#header {
+    background-color: var(--vinho);
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+#voltar_btn {
+    color: var(--laranja-destaque);
+    text-decoration: none;
+    font-size: var(--fonte-texto);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,50 @@
+#botoes_cardapio {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#botoes_direita {
+    display: flex;
+    gap: 100px;
+}
+
+.botao {
+    background-color: var(--laranja-destaque);
+    border: none;
+    border-radius: 10px;
+    width: 10vw;
+    height: 4vh;
+    font-size: var(--tamanho-texto-btn);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--vinho);
+}
+#botoes_cardapio button {
+    background-color: var(--laranja-destaque);
+    border: none;
+    border-radius: 10px;
+    width: 10vw;
+    height: 4vh;
+    font-size: var(--tamanho-texto-btn);
+}
+
+#cards_produtos {
+    display: grid;
+    gap: 80px;
+    grid-auto-columns: 1fr;
+}
+
+@media (min-width: 768px){
+    #cards_produtos{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1200px){
+    #cards_produtos{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
