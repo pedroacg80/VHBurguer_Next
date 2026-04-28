@@ -15,6 +15,11 @@
     margin-bottom: 5vh;
 }
 
+.area_edicao h1{
+    text-align: center;
+    font-size: 50;
+}
+
 .area_edicao {
     display: flex;
     flex-direction: column;

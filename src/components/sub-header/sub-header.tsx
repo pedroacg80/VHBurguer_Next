@@ -1,7 +1,7 @@
 import Link from "next/link"
 import styles from "./sub-header.module.css"
 
-const SubHeader = () => {
+const Sub_Header = () => {
     return (
         <header id={styles.header}>
             <div className={`${styles.container} layout_guide`}>
@@ -12,4 +12,4 @@ const SubHeader = () => {
     )
 }
 
-export default SubHeader;
+export default Sub_Header;
