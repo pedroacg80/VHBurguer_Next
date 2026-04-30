@@ -9,14 +9,14 @@ import { ToastContainer, toast } from 'react-toastify';
 const Categoria = () => {
 
     const [categoria, setCategoria] = useState<string>("");
-    const notificacao = (msg: string) => toast(msg);
+    const notificacao = (msg: string) => toast.success(msg);
     const erro = (msg: string) => toast.error(msg);
 
     async function cadastrar(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
         try{
             await cadastrarCategoria(categoria);
-            notificacao("Categoria cadastrada!")
+            notificacao("Categoria cadastrada com sucesso!")
         }
         catch(error: any) {
             erro(error.message);

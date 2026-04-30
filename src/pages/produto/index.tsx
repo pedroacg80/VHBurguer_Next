@@ -1,38 +1,108 @@
 import SubHeader from "@/components/sub-header/sub-header";
 import Footer from "@/components/footer/footer";
 import styles from "./produto.module.css"
+import { useEffect, useState } from "react";
+import { listarCategoria } from "../api/categoriaService";
+import { cadastrarProduto} from "../api/produtoService";
+import Toast from "@/components/toast/toast";
+import {erro, notificacao} from "@/utils/toast";
+
+interface Categoria {
+    categoriaId: number,
+    nome: string
+}
+
 const Produto = () => {
+
+    const [categorias, setCategorias] = useState<Categoria[]>([]);
+    const [nome, setNome] = useState<string>("");
+    const [descricao, setDescricao] = useState<string>("");
+    const [preco, setPreco] = useState<string>("");
+    const [imagem, setImagem] = useState<File | null>(null);
+    const [categoriasSelecionadas, setCategoriasSelecionadas] = useState<number[]>([]);
+    console.log(categoriasSelecionadas);
+
+    async function listarCategoriaEmProduto() {
+        const lista = await listarCategoria();
+        setCategorias(lista.data);
+        console.log(lista.data);
+    }
+
+    async function Cadastrar(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+        try {
+
+            const dados = {
+                nome,
+                descricao,
+                preco,
+                imagem,
+                categoriasIds: categoriasSelecionadas
+            }
+
+            await cadastrarProduto(dados)
+
+            notificacao("Produto cadastrado!");
+
+        } catch (error: any) {
+            erro(error.message)
+        }
+    }
+
+    //quando o produto for renderizado, a funcao ListarCategoriaEmProduto acontece
+    useEffect(() => {
+        listarCategoriaEmProduto();
+    }, [])
+
     return (
         <>
             <SubHeader />
-                <main id={styles.main}>
-                    <h1>Criar Produto</h1>
-                    <div id={styles.nome_produto} className={styles.campo}>
-                        <label htmlFor="">Nome do produto</label>
-                        <input type="text"  />
-                    </div>
-                    <div id={styles.descricao} className={styles.campo}>
-                        <label htmlFor="">Descricao</label>
-                        <input type="text" />
-                    </div>
-                    <div id={styles.preco} className={styles.campo}>
-                        <label htmlFor="">Preco(R$)</label>
-                        <input type="text" />
-                    </div>
-                    <div id={styles.categoria} className={styles.campo}> 
-                        <label htmlFor="">Categoria</label>
-                        <input type="text" />
-                    </div>
-                    <button>Adicionar categoria</button>
-                    <div id={styles.imagem} className={styles.campo}>
-                        <label htmlFor="">URL da imagem</label>
-                        <input type="text" />
-                    </div>
-                    <div id="botoes">
-                        <button>Adicionar Promocao</button>
-                        <button>Salvar</button>
-                    </div>
-                </main>
+            <Toast/>
+            <main className={styles.main_produto}>
+                <section className={`${styles.section_flex} layout_guide`}>
+                    <h1>Criar produto</h1>
+                    <form className={styles.formulario_produto} onSubmit={Cadastrar}>
+                        <div className={styles.campo_form}>
+                            <label htmlFor="">Nome do produto</label>
+                            <input type="text"
+                                value={nome} onChange={(e) => setNome(e.target.value)} />
+                        </div>
+                        <div className={styles.campo_form}>
+                            <label htmlFor="">Descrição</label>
+                            <textarea value={descricao} onChange={(e) => setDescricao(e.target.value)}></textarea>
+                        </div>
+                        <div className={styles.campo_form}>
+                            <label htmlFor="">Preço(R$)</label>
+                            <input type="text" value={preco} onChange={(e) => setPreco(e.target.value)} />
+                        </div>
+                        <div className={styles.campo_form}>
+                            <label htmlFor="">Categoria</label>
+                            <select multiple onChange={(e) => setCategoriasSelecionadas(
+                                Array.from(e.target.selectedOptions).map((option) => Number(option.value))
+                            )}>
+                                {categorias.map((item) => (
+                                    <option value={item.categoriaId} key={item.categoriaId}>{item.nome}</option>
+                                )
+                                )}
+                            </select>
+
+                            <a href="">Criar categoria</a>
+                        </div>
+                        <div className={styles.campo_form}>
+                            <label htmlFor="">Imagem do produto</label>
+                            <input
+                                type="file"
+                                onChange={(e) => {
+                                    if (e.target.files && e.target.files[0]) {
+                                        setImagem(e.target.files[0]);
+                                    }
+                                }}
+                            />
+                        </div>
+                        <button type="submit" id={styles.btn_salvar}>Salvar</button>
+                    </form>
+                </section>
+            </main>
             <Footer />
         </>
     )

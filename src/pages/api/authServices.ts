@@ -1,6 +1,5 @@
 import secureLocalStorage from "react-secure-storage";
 import { api } from "./api";
-import { ToastContainer, toast } from 'react-toastify';
 
 export async function login(email: string, senha: string) {
     try {
@@ -12,7 +11,7 @@ export async function login(email: string, senha: string) {
         const token = response.data.token;
 
         // localStorage.setItem("token", token)
-        secureLocalStorage.setItem("tokenzinho2", token);
+        secureLocalStorage.setItem("Token", token);
     }
     catch (error: any) {
         throw new Error("Email ou senha inválidos");
